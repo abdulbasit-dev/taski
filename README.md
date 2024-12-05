@@ -1,11 +1,12 @@
-### PHP Task Assignment: Task Manager with Authentication (Using PDO and MySQL)
+### Updated README File: **Tasky: PHP Task Manager with Authentication (Using PDO and MySQL)**
 
 ---
 
 #### **Objective**
 
-Build a PHP-based Task Manager with authentication using MySQL as the database. The application will allow users to manage their tasks,
-including adding, editing, deleting, and searching tasks. The design will use Bootstrap for styling.
+Build a secure and user-friendly PHP-based Task Manager application with MySQL as the database. The application will allow authenticated
+users to manage their own tasks, including adding, editing, deleting, and searching tasks. The design will use Bootstrap for responsive and
+modern styling.
 
 ---
 
@@ -15,22 +16,23 @@ including adding, editing, deleting, and searching tasks. The design will use Bo
 
 1. **User Registration**:
 
-   - Create a registration form to allow new users to sign up.
-   - Validate that the username is unique and the password meets security criteria (e.g., minimum 8 characters).
-   - Hash passwords using `password_hash()` before saving them to the database.
+   - Allow new users to register using a registration form.
+   - Validate username uniqueness and enforce password security (e.g., minimum 8 characters).
+   - Store passwords securely using `password_hash()`.
 
 2. **Login**:
 
-   - Create a login page to authenticate users.
-   - Use PDO to query the database and validate the username and hashed password.
-   - Use sessions to maintain the user's login status.
+   - Authenticate users with a login form.
+   - Use PDO to validate credentials against the database, checking the hashed password.
+   - Maintain session states for logged-in users.
 
 3. **Logout**:
 
-   - Provide a logout button to end the session and redirect to the login page.
+   - Provide a logout option to end the session and redirect to the login page.
 
 4. **Restrict Access**:
-   - Only logged-in users should have access to the task manager dashboard.
+   - Ensure that only authenticated users can access the task manager.
+   - Redirect unauthorized users to the login page.
 
 ---
 
@@ -38,25 +40,51 @@ including adding, editing, deleting, and searching tasks. The design will use Bo
 
 1. **Task Dashboard**:
 
-   - Display tasks for the logged-in user in a table.
+   - Display tasks belonging to the logged-in user in a table.
    - Columns: Task Name, Description, Status (Pending/Completed), Creation Date, Actions (Edit/Delete).
 
 2. **Add Task**:
 
    - Provide a form to add new tasks.
    - Fields: Task Name, Description, and Status (default to Pending).
-   - Validate the form input.
+   - Validate form inputs before saving tasks.
 
 3. **Edit Task**:
 
-   - Allow users to update a task's details and status.
+   - Allow users to update their own tasks, including changing details and status.
+   - Prevent users from editing tasks belonging to other users.
 
 4. **Delete Task**:
 
-   - Allow users to delete tasks.
+   - Allow users to delete their own tasks.
+   - Prevent users from deleting tasks belonging to others.
 
 5. **Search Tasks**:
-   - Add a search bar to filter tasks by name or status.
+
+   - Include a search bar to filter tasks by name or status.
+
+---
+
+#### **Additional Features**
+
+1. **Ownership Restrictions**:
+
+   - Ensure users can only access, edit, or delete tasks associated with their own account.
+
+2. **Enhanced Validation**:
+
+   - Add server-side validation to ensure data integrity.
+
+3. **Confirmation Dialogs**:
+
+   - Use Bootstrap modals to confirm actions like deleting a task.
+
+4. **Task Completion Tracker**:
+
+   - Show a progress indicator on the dashboard for completed vs. total tasks.
+
+5. **User-Friendly Notifications**:
+   - Use Bootstrap alerts to display messages for successful or failed operations (e.g., "Task added successfully!").
 
 ---
 
@@ -82,9 +110,9 @@ Create a MySQL database with the following tables:
 
 #### **Styling**
 
-- Use Bootstrap for layout and design.
-- Implement a responsive design for the task manager interface.
-- Include a navigation bar with links to the dashboard, logout, and a welcome message for the logged-in user.
+- Use **Bootstrap** for layout and design.
+- Add a navigation bar with links to the dashboard, logout, and a welcome message for the logged-in user.
+- Use Bootstrap cards, modals, and alerts to enhance user experience.
 
 ---
 
@@ -97,45 +125,59 @@ Create a MySQL database with the following tables:
 
 2. **User Authentication**:
 
-   - Create forms for registration and login.
-   - Use PDO to interact with the database for user validation.
-   - Use sessions to manage login states.
+   - Create registration and login forms.
+   - Use PDO prepared statements for secure database queries.
+   - Implement session-based access control.
 
 3. **Task Management**:
 
-   - Build CRUD functionality (Create, Read, Update, Delete) for tasks.
-   - Filter tasks by the logged-in user's `user_id`.
+   - Implement CRUD functionality (Create, Read, Update, Delete) for tasks.
+   - Restrict users to managing their own tasks.
 
 4. **UI Design**:
 
-   - Use Bootstrap components (tables, forms, buttons, modals) for the interface.
+   - Use Bootstrap components for the interface, including tables, buttons, modals, and alerts.
 
 5. **Validation and Security**:
 
-   - Validate all form inputs.
-   - Use prepared statements with PDO to prevent SQL injection.
-   - Hash passwords for secure storage.
-
-6. **Test**:
-   - Test the application for different scenarios, including login/logout, adding tasks, and editing/deleting tasks.
+   - Validate form inputs.
+   - Hash passwords and use prepared statements to prevent SQL injection.
 
 ---
 
 #### **Deliverables**
 
 1. A fully functional PHP application that:
+
    - Allows user registration and login.
-   - Lets users manage their tasks.
-   - Restricts access to authenticated users.
+   - Restricts task management to authenticated users.
+   - Ensures users can only manage their own tasks.
+   - Has a responsive and polished interface.
+
 2. A MySQL script to create and populate the required tables.
-3. A clean and responsive UI designed with Bootstrap.
+
+3. Detailed documentation on installation and usage.
+
+---
+
+#### **Suggestions for Future Enhancements**
+
+1. **Task Categories**:
+
+   - Add support for categorizing tasks (e.g., Work, Personal).
+
+2. **Deadline Management**:
+
+   - Include a deadline field for tasks and highlight overdue tasks.
+
+3. **Forgot Password Feature**:
+
+   - Implement a password reset functionality via email.
 
 ---
 
 #### **Evaluation Criteria**
 
-1. Proper use of PDO for database interactions.
-2. Secure authentication using password hashing.
-3. Clean and maintainable PHP code with proper validation.
-4. Responsive and user-friendly design.
-5. Correct functionality for all features.
+1. Proper use of PDO and prepared statements for database interactions.
+2. Secure authentication with password hashing.
+3. Implementation of ownership restrictions to ensure data security.
